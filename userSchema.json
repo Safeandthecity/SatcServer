@@ -1,0 +1,28 @@
+[
+    {
+        "id": 123,
+        "firstName": "Glitchy",
+        "lastName": "Jackson",
+        "email": "glitchy@gmail.com",
+        "phone": "0123",
+        "dataOfBirth": "31-12-1999",
+        "gender": "female",
+        "hasPledged": "yes",
+        "contacts": [
+            {
+                "id": 1,
+                "fullName": "Donald Duck",
+                "email": "donaldduck@gmail.com",
+                "phone": "12",
+                "relationship": "friend"
+            },
+            {
+                "id": 2,
+                "fullName": "Bugs Bunny",
+                "email": "bugsbunny@gmail.com",
+                "phone": "34",
+                "relationship": "friend"
+            }
+        ]
+    }
+]
