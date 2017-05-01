@@ -11,7 +11,7 @@ jsonfile.readFile("userSchema.json", function (err, obj) {
 })
 
 app.get('/', function (req, res) {
-    res.send("Hello Jill (or Jilian)");
+    res.send("Hello Jill (or Jilian)... 01-05-2017");
 })
 
 app.get('/getUsers', function (req, res) {
