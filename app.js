@@ -1,26 +1,44 @@
 var express = require('express')
 var jsonfile = require('jsonfile')
 var request = require('request')
+var mongoose = require('mongoose')
 
 var app = express()
 
-var data;
-jsonfile.readFile("userSchema.json", function (err, obj) {
-    console.log(obj);
-    data = obj;
-})
+Schema = new mongoose.Schema({
+    id: String,
+    firstName: String,
+    lastName: String
+}),
+
+User = mongoose.model('User', Schema);
+
+var uri = process.env.MONGOLAB_URI;
+
+mongoose.connect(uri, function (error) {
+    if (error) console.error(error);
+    else console.log('mongo connected');
+});
+
+console.log("Hello! I am here!")
 
 app.get('/', function (req, res) {
-    res.send("Hello Jill (or Jilian)... 01-05-2017");
+    res.send("Hello Jill (or Jilian)... 06-05-2017");
 })
 
 app.get('/getUsers', function (req, res) {
-    res.json(data);
+    console.log('Nothing here yet!');
 })
 
-app.get('/getCrimeData', function (req, res) {
-    request('https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2013-01', function (error, response, body) {
-        res.json(body);
+app.post('/user', function (req, res) {
+    var user = new User({
+        firstName: "First Name",
+        lastName: "Last Name"
+    });
+    user.id = user._id;
+
+    user.save(function (err) {
+        res.json(200, user);
     });
 })
 
